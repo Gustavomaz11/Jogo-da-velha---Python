@@ -22,6 +22,8 @@ def criando_matriz():
 
 def verifica_vencedor():
 
+    vencedor = False
+
     for v in range(len(matriz)):
         
         contador_jogador_linha = 0
@@ -36,7 +38,7 @@ def verifica_vencedor():
                 
                 if contador_jogador_linha == 3:
                     print("O usuário venceu!")
-                    
+                    vencedor = True        
                     break
             
             if matriz[v][g] == "O":
@@ -44,6 +46,7 @@ def verifica_vencedor():
                 
                 if contador_Pc_linha == 3:
                     print("O computador venceu!")
+                    vencedor = True
                     
                     break
             
@@ -51,29 +54,36 @@ def verifica_vencedor():
                 contador_jogador_coluna +=1
                 if contador_jogador_coluna ==3:
                     print("Usuário Venceu!")
+                    vencedor = True
                     break
 
             if matriz[g][v] == "O":
                 contador_PC_coluna += 1
                 if contador_PC_coluna == 3:
                     print("Computador Venceu!")
+                    vencedor = True
                     break
             
         if matriz[0][0] == "X" and matriz[1][1] == "X" and matriz[2][2] == "X":
             print("O usuário venceu!")
+            vencedor = True
             break
         
         if matriz[0][2] == "X" and matriz[1][1] =="X" and matriz[2][0] == "X":
             print("O usuário venceu!")
+            vencedor = True
             break
         
         if matriz[0][2] == "O" and matriz[1][1] == "O" and matriz[2][0] == "O":
             print("O computador venceu!")
+            vencedor = True
             break
         
         if matriz[0][0] == "O" and matriz[1][1] =="O" and matriz[2][2] == "O":
             print("O computador venceu!")
+            vencedor = True
             break
+    return vencedor
         
 def jogo():
 
@@ -107,5 +117,7 @@ def jogo():
 
 criando_matriz()
 while True:
-    verifica_vencedor()
+    vencedor = verifica_vencedor()
+    if vencedor == True:
+        break
     jogo()
